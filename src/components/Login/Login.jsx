@@ -34,7 +34,7 @@ const Login = () => {
       ) : (
         <form onSubmit={handleLogin}>
         <div>
-          <label htmlFor="username">Usuario:</label>
+          <label htmlFor="username">Usuario: </label>
           <input
             type="text"
             id="username"
@@ -42,8 +42,9 @@ const Login = () => {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
+        <br />
         <div>
-          <label htmlFor="password">Contraseña:</label>
+          <label htmlFor="password">Contraseña: </label>
           <input
             type="password"
             id="password"
@@ -51,6 +52,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+        <br />
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <button type="submit">Iniciar Sesión</button>
       </form>
