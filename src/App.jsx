@@ -1,13 +1,19 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HomePage from './components/HomePage/HomePage';
+import  UserProvider from './context/userContext.jsx';
+import Login from './components/Login/Login.jsx';
+import Inicio from './components/Inicio/Inicio.jsx';
 
 function App() {
 	return (
-	  <Router>
-		<Routes>
-		  <Route path="/" element={<HomePage />} />
-		</Routes>
-	  </Router>
+		<UserProvider>
+			<Router>
+				<Routes>
+				<Route path="/" element={<Login />} />
+				<Route path='/Inicio' element={<Inicio />}/>
+				</Routes>
+			</Router>
+		</UserProvider>
+		
 	);
   }
   
