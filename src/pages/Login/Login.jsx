@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { userContext } from '../../context/userContext';
+import { UserContext } from '../../context/userContext';
 
 const Login = () => {
 
@@ -8,7 +8,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const { login, isAutenticado } = useContext(userContext);
+  const { login, isAutenticado } = useContext(UserContext);
 
   const navigate = useNavigate();
 

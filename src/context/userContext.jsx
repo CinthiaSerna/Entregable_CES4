@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 
-export const userContext = createContext();
+export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
     const [isAutenticado, setIsAutenticado] = useState(false);
@@ -19,9 +19,9 @@ const UserProvider = ({ children }) => {
     };
 
     return (
-        <userContext.Provider value={{ isAutenticado, login, logout }}>
+        <UserContext.Provider value={{ isAutenticado, login, logout }}>
             {children}
-        </userContext.Provider>
+        </UserContext.Provider>
     )
 }
 
