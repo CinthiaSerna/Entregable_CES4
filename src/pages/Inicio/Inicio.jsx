@@ -18,12 +18,20 @@ const Inicio = () => {
     navigate('/Registro')
   }
 
+  const navegarLista = () => {
+    navigate('/Lista-vehiculos')
+  }
+
   return (
     <div>
       <div>
         <h1>Inicio</h1>
         <div>
           <button onClick={navegarRegistro}>Registrar un vehículo</button>
+        </div>
+        <br />
+        <div>
+          <button onClick={navegarLista}>Ver listado de vehículos</button>
         </div>
         <br />
         <button onClick={handleLogout}>Cerrar sesión</button>

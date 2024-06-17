@@ -27,6 +27,11 @@ const FormRegistroVehiculos = ({ onSubmit }) => {
         </div>
         <br />
         <div>
+            <label>Placa: </label>
+            <input type='text' value={placa} onChange={(e) => setPlaca(e.target.value)} required/>
+        </div>
+        <br />
+        <div>
             <label>Marca: </label>
             <select value={marca} onChange={(e) => setMarca(e.target.value)} required>
                 <option value="">Selecciona una marca</option>

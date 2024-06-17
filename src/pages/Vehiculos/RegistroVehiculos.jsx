@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import FormRegistroVehiculos from '../../components/FormRegistroVehiculos';
 import { useContext } from 'react';
 import { VehiculoContext } from '../../context/vehiculoContext.jsx';
+import FormRegistroVehiculos from '../../components/FormRegistroVehiculos';
 
 const RegistroVehiculos = () => {
 
