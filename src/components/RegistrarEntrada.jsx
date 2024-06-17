@@ -1,21 +1,26 @@
 import React, { useState } from 'react'
 
-const RegistrarEntrada = ({ vehiculo, onRegistrar }) => {
+const RegistrarEntrada = ({ vehiculo, onRegistrar, celdasOcupadas }) => {
 
     const [celda, setCelda] = useState('');
     const [error, setError] = useState('');
 
+
     const handleSubmit = (event) => {
         event.preventDefault();
         if (celda) {
-            const entrada = {
-                vehiculo, 
-                fecha: new Date(),
-                celda,
-            };
-            onRegistrar(entrada);
+            if (celdasOcupadas.includes(celda)) {
+                setError('Esta celda ya está ocupada. Por favor, seleccione otra.');
+            } else {
+                const entrada = {
+                    vehiculo,
+                    fecha: new Date(),
+                    celda,
+                };
+                onRegistrar(entrada);
+            }
         } else {
-            setError('Debe de seleccionar una celda');
+            setError('Debe seleccionar una celda.');
         }
     };
 

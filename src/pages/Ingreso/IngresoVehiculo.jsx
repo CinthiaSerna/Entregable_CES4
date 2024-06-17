@@ -9,22 +9,26 @@ const IngresoVehiculo = () => {
 
     const [vehiculos, setVehiculos] = useState([]);
     const [vehiculoSeleccionado, setVehiculoSeleccionado] = useState(null);
+    const [celdasOcupadas, setCeldasOcupadas] = useState([]);
 
     const handleBuscar = (resultado) => {
         setVehiculos(resultado);
         setVehiculoSeleccionado(resultado.length > 0 ? resultado[0] : null);
     }
 
-    const handleSeleccionarVehiculo = (e) => {
-        const selectedVehicle = vehiculos.find(vehiculo => vehiculo.placa === e.target.value);
-        setVehiculoSeleccionado(selectedVehicle);
-    }
-
     const handleRegistrar = (entrada) => {
         registrarIngresos(entrada);
+        setCeldasOcupadas([...celdasOcupadas,entrada.celda]);
         alert('Entrada registrada correctamente');
         setVehiculoSeleccionado(null);
         setVehiculos([]);
+    }
+
+    const handleSeleccionarVehiculo = (e) => {
+        const vehiculo = vehiculos.find(v => v.placa === e.target.value);
+        setVehiculoSeleccionado(vehiculo);
+        // const selectedVehicle = vehiculos.find(vehiculo => vehiculo.placa === e.target.value);
+        // setVehiculoSeleccionado(selectedVehicle);
     }
 
   return (
@@ -34,7 +38,7 @@ const IngresoVehiculo = () => {
         {vehiculos.length > 0 && (
             <div>
                 <h2>Seleccione el vehículo: </h2>
-                <select value={vehiculoSeleccionado ? vehiculoSeleccionado.placa : ''} onChange={handleSeleccionarVehiculo} required>
+                <select value={vehiculoSeleccionado?.placa || ''} onChange={handleSeleccionarVehiculo} required>
                     {vehiculos.map((vehiculo, index) => (
                         <option key={index} value={vehiculo.placa}>
                             {vehiculo.placa} - {vehiculo.marca} - {vehiculo.modelo}
@@ -44,7 +48,7 @@ const IngresoVehiculo = () => {
             </div>
         )}
         {vehiculoSeleccionado && (
-            <RegistrarEntrada vehiculo={vehiculoSeleccionado} onRegistrar={handleRegistrar}/>
+            <RegistrarEntrada vehiculo={vehiculoSeleccionado} onRegistrar={handleRegistrar} celdasOcupadas={celdasOcupadas}/>
         )}
     </div>
   )
