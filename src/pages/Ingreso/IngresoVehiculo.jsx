@@ -9,7 +9,9 @@ const IngresoVehiculo = () => {
 
     const [vehiculos, setVehiculos] = useState([]);
     const [vehiculoSeleccionado, setVehiculoSeleccionado] = useState(null);
-    const [celdasOcupadas, setCeldasOcupadas] = useState([]);
+    const [celdasCarro, setCeldasCarro] = useState(['C1', 'C2', 'C3', 'C4', 'C5']); 
+    const [celdasMoto, setCeldasMoto] = useState(['M1', 'M2', 'M3', 'M4', 'M5']); 
+
 
     const handleBuscar = (resultado) => {
         setVehiculos(resultado);
@@ -18,7 +20,11 @@ const IngresoVehiculo = () => {
 
     const handleRegistrar = (entrada) => {
         registrarIngresos(entrada);
-        setCeldasOcupadas([...celdasOcupadas,entrada.celda]);
+        if (entrada.vehiculo.tipo === 'carro') {
+            setCeldasCarro(celdasCarro.filter(celda => celda !== entrada.celda));
+        } else if (entrada.vehiculo.tipo === 'moto') {
+            setCeldasMoto(celdasMoto.filter(celda => celda !== entrada.celda));
+        }
         alert('Entrada registrada correctamente');
         setVehiculoSeleccionado(null);
         setVehiculos([]);
@@ -27,8 +33,6 @@ const IngresoVehiculo = () => {
     const handleSeleccionarVehiculo = (e) => {
         const vehiculo = vehiculos.find(v => v.placa === e.target.value);
         setVehiculoSeleccionado(vehiculo);
-        // const selectedVehicle = vehiculos.find(vehiculo => vehiculo.placa === e.target.value);
-        // setVehiculoSeleccionado(selectedVehicle);
     }
 
   return (
@@ -48,7 +52,11 @@ const IngresoVehiculo = () => {
             </div>
         )}
         {vehiculoSeleccionado && (
-            <RegistrarEntrada vehiculo={vehiculoSeleccionado} onRegistrar={handleRegistrar} celdasOcupadas={celdasOcupadas}/>
+            <RegistrarEntrada 
+            vehiculo={vehiculoSeleccionado} 
+            onRegistrar={handleRegistrar} 
+            celdasDisponibles={vehiculoSeleccionado.tipo === 'carro' ? celdasCarro : celdasMoto} 
+        />
         )}
     </div>
   )

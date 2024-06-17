@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const RegistrarEntrada = ({ vehiculo, onRegistrar, celdasOcupadas }) => {
+const RegistrarEntrada = ({ vehiculo, onRegistrar, celdasDisponibles }) => {
 
     const [celda, setCelda] = useState('');
     const [error, setError] = useState('');
@@ -9,16 +9,12 @@ const RegistrarEntrada = ({ vehiculo, onRegistrar, celdasOcupadas }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (celda) {
-            if (celdasOcupadas.includes(celda)) {
-                setError('Esta celda ya está ocupada. Por favor, seleccione otra.');
-            } else {
-                const entrada = {
-                    vehiculo,
-                    fecha: new Date(),
-                    celda,
-                };
-                onRegistrar(entrada);
-            }
+            const entrada = {
+                vehiculo,
+                fecha: new Date(),
+                celda,
+            };
+            onRegistrar(entrada);
         } else {
             setError('Debe seleccionar una celda.');
         }
@@ -36,7 +32,12 @@ const RegistrarEntrada = ({ vehiculo, onRegistrar, celdasOcupadas }) => {
         <br />
         <div>
             <label>Celda: </label>
-            <input type='text' value={celda} onChange={(e) => setCelda(e.target.value)} required/>
+            <select value={celda} onChange={(e) => setCelda(e.target.value)} required>
+                <option value="">Seleccione una celda</option>
+                {celdasDisponibles.map((celda, index) => (
+                    <option key={index} value={celda}>{celda}</option>
+                ))}
+            </select>
         </div>
         <br />
         {error && <p style={{ color: 'red' }}>{error}</p>}
