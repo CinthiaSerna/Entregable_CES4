@@ -22,6 +22,10 @@ const Inicio = () => {
     navigate('/Lista-vehiculos')
   }
 
+  const navegarIngreso = () => {
+    navigate('/Ingreso')
+  }
+
   return (
     <div>
       <div>
@@ -32,6 +36,10 @@ const Inicio = () => {
         <br />
         <div>
           <button onClick={navegarLista}>Ver listado de vehículos</button>
+        </div>
+        <br />
+        <div>
+          <button onClick={navegarIngreso}>Registrar ingreso de un vehículo</button>
         </div>
         <br />
         <button onClick={handleLogout}>Cerrar sesión</button>

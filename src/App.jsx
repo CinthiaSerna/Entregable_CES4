@@ -5,6 +5,7 @@ import Inicio from './pages/Inicio/Inicio.jsx';
 import RegistroVehiculos from './pages/Vehiculos/RegistroVehiculos.jsx';
 import VehiculoProvider from './context/vehiculoContext.jsx';
 import ListaVehiculos from './pages/ListaVehiculos/ListaVehiculos.jsx';
+import IngresoVehiculo from './pages/Ingreso/IngresoVehiculo.jsx';
 
 function App() {
 	return (
@@ -16,6 +17,7 @@ function App() {
 				<Route path='/Inicio' element={<Inicio />}/>
 				<Route path='/Registro' element={<RegistroVehiculos />}/>
 				<Route path='/Lista-vehiculos' element={<ListaVehiculos />}/>
+				<Route path='/Ingreso' element={<IngresoVehiculo />}/>
 				</Routes>
 			</Router>
 			</VehiculoProvider>
