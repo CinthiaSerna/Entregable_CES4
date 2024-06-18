@@ -10,7 +10,7 @@ const VisualizarCeldas = () => {
             <h2>Celdas Para Carros: </h2>
             <div>
                 {celdas.carros.map((entrada, index) => (
-                    <div key={index} style={{marginBottom: '10px', border: '1px solid black', padding: '10px'}}>
+                    <div key={index} style={{ marginBottom: '10px', border: '1px solid black', padding: '10px' }}>
                         <p>Celda {index + 1}: {entrada ? 'Ocupada' : 'Disponible'}</p>
                         {entrada && (
                             <div>
@@ -19,7 +19,7 @@ const VisualizarCeldas = () => {
                                 <p>Modelo: {entrada.vehiculo.modelo}</p>
                                 <p>Cilindraje: {entrada.vehiculo.cilindraje}</p>
                                 <p>Documento: {entrada.vehiculo.documento}</p>
-                                <p>Fecha de Ingreso: {entrada.fecha.toString()}</p>
+                                <p>Fecha de Ingreso: {new Date(entrada.fecha).toLocaleString()}</p>
                             </div>
                         )}
                     </div>
@@ -28,7 +28,7 @@ const VisualizarCeldas = () => {
             <h2>Celdas Para Motos: </h2>
             <div>
                 {celdas.motos.map((entrada, index) => (
-                    <div key={index} style={{marginBottom: '10px', border: '1px solid black', padding: '10px'}}>
+                    <div key={index} style={{ marginBottom: '10px', border: '1px solid black', padding: '10px' }}>
                         <p>Celda {index + 1}: {entrada ? 'Ocupada' : 'Disponible'}</p>
                         {entrada && (
                             <div>
@@ -37,7 +37,7 @@ const VisualizarCeldas = () => {
                                 <p>Modelo: {entrada.vehiculo.modelo}</p>
                                 <p>Cilindraje: {entrada.vehiculo.cilindraje}</p>
                                 <p>Documento: {entrada.vehiculo.documento}</p>
-                                <p>Fecha de Ingreso: {entrada.fecha.toString()}</p>
+                                <p>Fecha de Ingreso: {new Date(entrada.fecha).toLocaleString()}</p>
                             </div>
                         )}
                     </div>
@@ -45,6 +45,6 @@ const VisualizarCeldas = () => {
             </div>
         </div>
     );
-}
+};
 
 export default VisualizarCeldas;
