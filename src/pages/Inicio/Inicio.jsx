@@ -26,6 +26,10 @@ const Inicio = () => {
     navigate('/Ingreso')
   }
 
+  const navegarCeldas = () => {
+    navigate('/Visualizacion-celdas')
+  }
+
   return (
     <div>
       <div>
@@ -40,6 +44,10 @@ const Inicio = () => {
         <br />
         <div>
           <button onClick={navegarIngreso}>Registrar ingreso de un vehículo</button>
+        </div>
+        <br />
+        <div>
+          <button onClick={navegarCeldas}>Visualizar Listado de Celdas</button>
         </div>
         <br />
         <button onClick={handleLogout}>Cerrar sesión</button>
